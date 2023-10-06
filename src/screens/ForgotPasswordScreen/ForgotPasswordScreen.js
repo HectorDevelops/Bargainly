@@ -5,16 +5,16 @@ import CustomButton from '../../components/CustomButton/CustomButton';
 import {useNavigation} from '@react-navigation/native';
 
 const ForgotPasswordScreen = () => {
+  // Creating the navigation prop to navigate to different screens within the app
   const navigation = useNavigation();
   const [username, setUsername] = useState('');
 
+  // When creating an event, navigation prop will route to Sign In
   const onSendPressed = () => {
-    console.warn('Confirmed Code');
     navigation.navigate('SignInScreen');
   };
 
   const onSignedInPressed = () => {
-    console.warn('Going back to Signing In');
     navigation.navigate('SignInScreen');
   };
 
@@ -22,12 +22,13 @@ const ForgotPasswordScreen = () => {
     <ScrollView>
       <View style={styles.root}>
         <Text style={styles.title}>Reset Your Password</Text>
+        {/* The Custom Inputs below will collect the state variable value inputted by user and set it as its new data  */}
         <CustomInput
           placeholder="Username"
           value={username}
           setValue={setUsername}
         />
-
+        {/* Creating these Custom Buttons to trigger event and re-direct to new screen.  */}
         {/* Primary Button */}
         <CustomButton text="Send" onPress={onSendPressed} />
 

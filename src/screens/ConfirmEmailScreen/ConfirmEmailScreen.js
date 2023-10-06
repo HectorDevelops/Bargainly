@@ -5,10 +5,12 @@ import CustomButton from '../../components/CustomButton/CustomButton';
 import {useNavigation} from '@react-navigation/native';
 
 const SignUpScreen = () => {
+  // Creating the navigation prop to navigate to different screens within the app
   const navigation = useNavigation();
 
   const [code, setCode] = useState('');
 
+  // When creating an event, navigation prop will send to the desired screen route
   const onConfirmedPressed = () => {
     navigation.navigate('HomeScreen');
   };
@@ -21,6 +23,7 @@ const SignUpScreen = () => {
   };
 
   return (
+    // ScrollView is creating a scrollable view in case components do not fit depending on device size
     <ScrollView>
       <View style={styles.root}>
         <Text style={styles.title}>Confirm your email</Text>

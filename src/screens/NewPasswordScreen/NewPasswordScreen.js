@@ -4,6 +4,7 @@ import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
 
 const NewPasswordScreen = () => {
+  
   const [code, setCode] = useState('');
   const [newPassword, setNewPassword] = useState('');
 
