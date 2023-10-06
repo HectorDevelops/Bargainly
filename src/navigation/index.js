@@ -10,10 +10,12 @@ import ForgotPasswordScreen from '../screens/ForgotPasswordScreen';
 import NewPasswordScreen from '../screens/NewPasswordScreen';
 import HomeScreen from '../screens/HomeScreen';
 
+// The Stack function creates the component of screens that we will be navigating through
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
   return (
+    // Including NavigationContainer as it manages the navigation tree
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="SignInScreen" component={SignInScreen} />
