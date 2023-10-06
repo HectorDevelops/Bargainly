@@ -9,33 +9,26 @@ import {
 import Logo from '../../../assets/images/Bargainly.png';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
+import SocialSignInButtons from '../../components/SocialSignInButtons';
+import {useNavigation} from '@react-navigation/native';
 
 const SignInScreen = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const {height} = useWindowDimensions();
+  const navigation = useNavigation();
 
   const onSignInPressed = () => {
-    console.warn('Sign In Hector');
+    navigation.navigate('HomeScreen');
   };
 
   const onForgotPasswordPressed = () => {
-    console.warn('Forgot password');
-  };
-
-  const onSignInApple = () => {
-    console.warn('Signed in with Apple');
-  };
-  const onSignInGoogle = () => {
-    console.warn('Signed in with Google');
-  };
-  const onSignInFacebook = () => {
-    console.warn('Signed in with Facebook');
+    navigation.navigate('ForgotPasswordScreen');
   };
 
   const onSignUpPress = () => {
-    console.warn('Create account');
+    navigation.navigate('SignUpScreen');
   };
 
   return (
@@ -64,25 +57,8 @@ const SignInScreen = () => {
           onPress={onForgotPasswordPressed}
           type="TERTIARY"
         />
+        <SocialSignInButtons />
 
-        <CustomButton
-          text="Sign In with Apple"
-          onPress={onSignInApple}
-          bgColor="#e3e3e3"
-          fgColor="#363636"
-        />
-        <CustomButton
-          text="Sign In with Google"
-          onPress={onSignInGoogle}
-          bgColor="#FAE9EA"
-          fgColor="#DD4D44"
-        />
-        <CustomButton
-          text="Sign In with Facebook"
-          onPress={onSignInFacebook}
-          bgColor="#E7EAF4"
-          fgColor="#4765A9"
-        />
         <CustomButton
           text="Create an account"
           onPress={onSignUpPress}
@@ -99,7 +75,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   logo: {
-    width: '90%',
+    width: '100%',
     maxWidth: 500,
     maxHeight: 200,
   },

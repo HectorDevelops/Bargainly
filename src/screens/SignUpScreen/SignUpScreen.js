@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
+import SocialSignInButtons from '../../components/SocialSignInButtons';
+import {useNavigation} from '@react-navigation/native';
 
 const SignUpScreen = () => {
   const [username, setUsername] = useState('');
@@ -9,29 +11,21 @@ const SignUpScreen = () => {
   const [password, setPassword] = useState('');
   const [passwordRepeat, setPasswordRepeat] = useState('');
 
+  const navigation = useNavigation();
+
   const onRegisteredPressed = () => {
-    console.warn('Sign In Hector');
+    navigation.navigate('ConfirmEmailScreen');
   };
 
-  const onForgotPasswordPressed = () => {
-    console.warn('Forgot password');
-  };
-
-  const onSignInApple = () => {
-    console.warn('Signed in with Apple');
-  };
-  const onSignInGoogle = () => {
-    console.warn('Signed in with Google');
-  };
-  const onSignInFacebook = () => {
-    console.warn('Signed in with Facebook');
-  };
-
-  const onSignUpPress = () => {
-    console.warn('Create account');
+  const haveAnAccountSignIn = () => {
+    navigation.navigate('SignInScreen');
   };
   const onTermsOfUse = () => {
     console.warn('Terms of Use pressed');
+  };
+
+  const onPrivacyPolictyPress = () => {
+    console.warn('Privacy Policy pressed');
   };
 
   return (
@@ -52,7 +46,7 @@ const SignUpScreen = () => {
           secureTextEntry={true}
         />
         <CustomInput
-          placeholder="Repeat Password"
+          placeholder="Confirm Password"
           value={passwordRepeat}
           setValue={setPasswordRepeat}
           secureTextEntry={true}
@@ -64,30 +58,18 @@ const SignUpScreen = () => {
           <Text style={styles.link} onPress={onTermsOfUse}>
             Terms of Use
           </Text>{' '}
-          and <Text style={styles.link}>Privacy Policy</Text>.
+          and{' '}
+          <Text style={styles.link} onPress={onPrivacyPolictyPress}>
+            Privacy Policy
+          </Text>
+          .
         </Text>
 
+        <SocialSignInButtons />
+
         <CustomButton
-          text="Sign In with Apple"
-          onPress={onSignInApple}
-          bgColor="#e3e3e3"
-          fgColor="#363636"
-        />
-        <CustomButton
-          text="Sign In with Google"
-          onPress={onSignInGoogle}
-          bgColor="#FAE9EA"
-          fgColor="#DD4D44"
-        />
-        <CustomButton
-          text="Sign In with Facebook"
-          onPress={onSignInFacebook}
-          bgColor="#E7EAF4"
-          fgColor="#4765A9"
-        />
-        <CustomButton
-          text="Create an account"
-          onPress={onSignUpPress}
+          text="Have an account? Sign In"
+          onPress={haveAnAccountSignIn}
           type="TERTIARY"
         />
       </View>
